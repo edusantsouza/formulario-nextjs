@@ -27,12 +27,6 @@ const ResponsiveForm = () => {
     console.log(name, email, itemSelect);
   };
 
-  let optionsSelect = [
-    "Masculino",
-    "Feminino",
-    "Não-binário",
-    "Prefiro não responder",
-  ];
   return (
     <form action="" onSubmit={onFormSubmit} className="form__style">
       <p className="form__title">Formulário Modular</p>

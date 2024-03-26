@@ -1,9 +1,15 @@
 import React from "react";
 
-const SelectField = ({ options, value, content, setContent }) => {
+const SelectField = ({ value, content, setContent }) => {
   const handleChange = (event) => {
     setContent(event.target.value);
   };
+  const optionsSelect = [
+    "Masculino",
+    "Feminino",
+    "Não-binário",
+    "Prefiro não responder",
+  ];
   return (
     <div className="form__select-wrapper">
       <h2>{value}</h2>
@@ -14,7 +20,7 @@ const SelectField = ({ options, value, content, setContent }) => {
         style={{ border: "1px solid var(--light-gray)" }}
       >
         <option value={""}>Selecione o seu gênero</option>
-        {options.map((item, index) => (
+        {optionsSelect.map((item, index) => (
           <option key={index} value={item}>
             {item}
           </option>
