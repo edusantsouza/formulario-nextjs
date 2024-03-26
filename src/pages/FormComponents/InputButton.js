@@ -4,9 +4,8 @@ const InputButton = ({ value, disable }) => {
       type="submit"
       value={value}
       disabled={disable}
-      className={`px-8 py-4 rounded-md text-white 
-    font-semibold ${!disable && "hover:bg-blue-600"} text-sm 
-    ${!disable ? "bg-blue-500 cursor-pointer" : "bg-blue-300"} `}
+      className={`button ${!disable && "onhover"}
+    ${disable ? "btn-disabled" : null} `}
     />
   );
 };

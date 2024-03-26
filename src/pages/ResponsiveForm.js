@@ -10,16 +10,21 @@ const ResponsiveForm = () => {
   const [itemSelect, setItemSelect] = useState("");
 
   useEffect(() => {
-    if (name !== "" && email !== "" && email.includes("@")) {
+    if (
+      name !== "" &&
+      itemSelect !== "" &&
+      email !== "" &&
+      email.includes("@")
+    ) {
       setButtonState(false);
     } else {
       setButtonState(true);
     }
-  });
+  }, [name, email, itemSelect]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(email, name);
+    console.log(name, email, itemSelect);
   };
 
   let optionsSelect = [
@@ -29,13 +34,8 @@ const ResponsiveForm = () => {
     "Prefiro não responder",
   ];
   return (
-    <form
-      action=""
-      onSubmit={onFormSubmit}
-      className="m-2 flex w-full flex-col px-6 py-8 bg-white rounded-lg
-       gap-12 border border-gray-300 items-start max-w-screen-sm w-screen"
-    >
-      <p className="font-semibold">Formulário Modular</p>
+    <form action="" onSubmit={onFormSubmit} className="form__style">
+      <p className="form__title">Formulário Modular</p>
 
       <InputField
         setContent={setName}
