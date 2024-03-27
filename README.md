@@ -86,6 +86,8 @@ O componente `InputButton.js` é o botão personalizável do form e espera receb
    
 As props que contém "*" são obrigatórias para o correto funcionamento do componente dentro do Form.
 
+- Veja [Background Color - Tailwind CSS](https://v2.tailwindcss.com/docs/background-color) na documentação.
+
 ### InputSelect
 
 ```bash
