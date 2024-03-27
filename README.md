@@ -1,40 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Componente de Formulário
 
-## Getting Started
+Formulário desenvolvido em Javascript dentro de um projeto NextJS, com
+a estilização feita em Tailwind CSS.
 
-First, run the development server:
+- Requisitos:
+  - Criar projeto React com NextJS:  [Começar um novo projeto React](https://react.dev/learn/start-a-new-react-project);
+  - Instalar Tailwind: [Instalar Tailwind CSS com NextJS](https://tailwindcss.com/docs/guides/nextjs)
+  - Importar o arquivo `form.css` para o componente raiz do projeto.
+
+
+### Além do componente principal, temos quatro subcomponentes que compoem o formulário.
+
+`ResponsiveForm.js`
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  <ResponsiveForm 
+  maxWidth=" *tailwind max-width* " 
+  width=" *taillwind width* " 
+  />
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O componente `ResponsiveForm.js` é o form em si e espera receber duas props: `maxWidth` e `Width`. Essas duas props não possuem
+valor padrão e são obrigatórias. No entanto, o valor delas esperar uma class Tailwind CSS relacionada a seus respectivos nomes.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Veja [Width - Tailwind CSS](https://v2.tailwindcss.com/docs/width) na documentação.
+Veja [Max-Width - Tailwind CSS](https://v2.tailwindcss.com/docs/maxwidth) na documentação.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`InputField.js`
+```bash
+ <InputField
+          label="Nome"
+          name="nome"
+          placeholder="John"
+          width="*taillwind width*"
+          setContent={setName}
+          content={name}
+          display={displayState}
+          reset={goBack}
+        />
+```
+O componente `InputField.js`  é o input personalizável espera receber as props:
 
-## Learn More
+- label* -> Label do Input
+- name* -> Name do Input
+- placeholder* -> Placeholder do Input
+- display* -> State criado no `ResponsiveForm.js` responsável pro controlarse  o Input será ou não mostrado na tela;
+- setContent* -> setState criado no `ResponsiveForm.js` responsável por setar o value inserido no Input pelo usuário;
+- content* ->  State criado no `ResponsiveForm.js` responsável por armazenar o value inserido no Input pelo usuário;
+- reset* -> State criado no `ResponsiveForm.js` responsável por resetar os campos do Input ao finalizar a action do Form após submit;
+- type -> Tipo do Input que já possui o ""valor padrão como `text`"", mas que pode ser passado via prop alterando o type para: `text`, `email`, `number` e `date`
+- width = Width do Input que já possui como ""valor padrão a class do Taillwind `w-full`"", mas que pode variar o tamanho do Input conforme o necessário via Tailwind class.
+- disabled -> Booleano que controla se o campo de Input está disabled ou não. ""Seu valor padrão é `false`.""
+- messageBool -> Booleano que controla se o aviso de erro abaixo do Input está visível ou não. ""Seu valor padrão é `true` e o aviso do input só tem variações entre `* Esse campo deve ser preenchido ` (que é exibido para todos os tipos de input) e `* Esse campo deve ser possuir um e-mail válido ` (exibido para inputs do tipo email).""
+   
+As props que contém ""*"" são obrigatórias para o correto funcionamento do componente dentro do Form.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Veja [Width - Tailwind CSS](https://v2.tailwindcss.com/docs/width) na documentação.

@@ -82,6 +82,9 @@ const ResponsiveForm = ({ maxWidth, width }) => {
     setDate("");
   }, [goBack]);
 
+  {
+    /* Array passada via prop para o componente de SelectField  */
+  }
   const optionsSelect = [
     "Masculino",
     "Feminino",

@@ -18,8 +18,14 @@ const InputField = ({
   const [visibility, setVisibility] = useState("invisible");
 
   const handleChange = (event) => {
+    {
+      /* Seta o value do campo no State passado via prop */
+    }
     setContent(event.target.value);
 
+    {
+      /* Altera a mensagem de erro abaixo do input e controla as cores das bordas */
+    }
     if (event.target.value.trim() !== "") {
       {
         /* Altera a mensagem de erro abaixo do input um aviso personalizado requerindo um e-mail válido */
@@ -38,6 +44,9 @@ const InputField = ({
     }
   };
 
+  {
+    /* Reseta as cores das bordas */
+  }
   useEffect(() => {
     setBorder("border-gray-300");
   }, [reset]);
