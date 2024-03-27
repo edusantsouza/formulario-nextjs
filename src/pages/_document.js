@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html
-      className="grid place-items-center h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900"
+      className="grid place-items-center h-full bg-gradient-to-r from-blue-600 via-blue-800 to-blue-900"
       lang="pt"
     >
       <Head />

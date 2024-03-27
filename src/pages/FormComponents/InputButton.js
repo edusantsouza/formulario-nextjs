@@ -7,6 +7,9 @@ const InputButton = ({
   setContent,
   content,
   name,
+  bgColor = "bg-blue-500",
+  bgDisabled = "bg-blue-300",
+  bgHover = "hover:bg-blue-600",
 }) => {
   const handleClick = () => {
     setContent(!content);
@@ -18,8 +21,8 @@ const InputButton = ({
       value={value}
       disabled={disabled}
       className={`${display} justify-center px-8 py-4 rounded-md text-white ${width}
-    font-semibold ${!disabled && "hover:bg-blue-600"} text-sm 
-    ${!disabled ? "bg-blue-500 cursor-pointer" : "bg-blue-300"} `}
+    font-semibold ${!disabled && bgHover} text-sm 
+    ${!disabled ? `${bgColor} cursor-pointer` : bgDisabled} `}
       onClick={name === "return" ? handleClick : null}
     />
   );
