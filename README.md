@@ -9,8 +9,6 @@ a estilização feita em Tailwind CSS.
   - Importar o arquivo `form.css` para o componente raiz do projeto.
 
 
-## Além do componente principal, temos quatro subcomponentes que compoem o formulário.
-
 ### ResponsiveForm
 
 ```bash
@@ -28,7 +26,8 @@ valor padrão e são obrigatórias. No entanto, o valor delas esperar uma class 
 
 
 
-`InputField.js`
+### InputField
+
 ```bash
  <InputField
           label="Nome"
@@ -41,7 +40,7 @@ valor padrão e são obrigatórias. No entanto, o valor delas esperar uma class 
           reset={goBack}
         />
 ```
-O componente `InputField.js`  é o input personalizável do form e espera receber as props:
+O componente `InputField.js` é o input personalizável do form e espera receber as props:
 
 - label* -> Label do Input
 - name* -> Name do Input
