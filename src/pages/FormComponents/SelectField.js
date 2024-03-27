@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 
 const SelectField = ({
   disabled = false,
+  width = "w-48",
   options,
   label,
   content,
   setContent,
-  width,
   display,
   name,
   reset,
+  standardValue,
 }) => {
   const [border, setBorder] = useState("#6b7280b2");
 
@@ -40,7 +41,7 @@ const SelectField = ({
         name={name}
       >
         <option className="p-2 " value="">
-          Selecione o seu gênero
+          {standardValue}
         </option>
         {options?.map((item, index) => (
           <option className="p-2 text-gray-600" key={index} value={item}>

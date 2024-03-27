@@ -1,7 +1,7 @@
 import InputButton from "./InputButton";
 
-const FormStatus = ({ type = "success", setGoBack, goBack }) => {
-  if (type === "success") {
+const FormStatus = ({ status = "success", setGoBack, goBack }) => {
+  if (status === "success") {
     return (
       <div
         className={`flex flex-col items-center justify-center gap-4 form-notice`}
@@ -37,7 +37,7 @@ const FormStatus = ({ type = "success", setGoBack, goBack }) => {
         />
       </div>
     );
-  } else if (type === "deleted") {
+  } else if (status === "deleted") {
     return (
       <div
         className={`flex flex-col items-center justify-center gap-4 form-notice`}

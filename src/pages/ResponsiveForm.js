@@ -141,6 +141,7 @@ const ResponsiveForm = ({ maxWidth, width }) => {
         <SelectField
           label="Gênero"
           name="gênero"
+          standardValue="Selecione o seu gênero"
           width="w-1/2 max-sm:w-full"
           display={displayState}
           content={itemSelect}
