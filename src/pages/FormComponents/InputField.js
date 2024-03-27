@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 const InputField = ({
   type = "text",
-  disabled = false,
   width = "w-full",
+  disabled = false,
   messageBool = true,
   label,
   placeholder,
@@ -13,17 +13,17 @@ const InputField = ({
   content,
   reset,
 }) => {
-  const [value, setValue] = useState("");
   const [border, setBorder] = useState("border-gray-300");
   const [message, setMessage] = useState("* Esse campo deve ser preenchido");
   const [visibility, setVisibility] = useState("invisible");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
-
     setContent(event.target.value);
 
     if (event.target.value.trim() !== "") {
+      {
+        /* Altera a mensagem de erro abaixo do input um aviso personalizado requerindo um e-mail válido */
+      }
       if (!event.target.value.includes("@") && type.toLowerCase() === "email") {
         setBorder("border-red-500");
         setMessage("* Esse campo deve possuir um e-mail válido");

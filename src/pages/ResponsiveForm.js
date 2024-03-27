@@ -36,7 +36,11 @@ const ResponsiveForm = ({ maxWidth, width }) => {
   };
 
   {
-    /* Valida os valores dos campos */
+    /* Valida os valores dos campos obrigatórios 
+    Cada campo acrescentado no form precisa ser colocado aqui
+    E caso o campo seja retirado, ele também precisa sair da condição de verificação 
+    Essencialmente ele alternar o estado do botão de submit ao entender que não restam campos 
+    considerados obrigatórios, vazios */
   }
   useEffect(() => {
     if (
@@ -89,19 +93,19 @@ const ResponsiveForm = ({ maxWidth, width }) => {
     <form
       action=""
       onSubmit={onFormSubmit}
-      className={`relative flex flex-col px-6 py-8 m-2 bg-white rounded-lg
+      className={`relative flex flex-col px-6 py-8 m-4 bg-white rounded-lg
        gap-12 border border-gray-300 items-start ${
          modalState === "flex" ? "min-h-full h-96" : null
        }  ${maxWidth} ${width}`}
     >
       <p className={`${displayState} font-semibold text-lg`}>Formulário</p>
 
-      <div className="flex gap-2 w-full">
+      <div className="flex gap-2 w-full max-sm:flex-col">
         <InputField
           label="Nome"
           name="nome"
           placeholder="John"
-          width="w-1/2"
+          width="w-1/2  max-sm:w-full"
           setContent={setName}
           content={name}
           display={displayState}
@@ -111,7 +115,7 @@ const ResponsiveForm = ({ maxWidth, width }) => {
           label="Sobrenome"
           name="sobrenome"
           placeholder="Doe"
-          width="w-1/2"
+          width="w-1/2  max-sm:w-full"
           setContent={setSurname}
           content={surname}
           display={displayState}
@@ -130,11 +134,11 @@ const ResponsiveForm = ({ maxWidth, width }) => {
         reset={goBack}
       />
 
-      <div className="flex gap-2 w-full items-center">
+      <div className="flex gap-2 w-full items-center max-sm:flex-col">
         <SelectField
           label="Gênero"
           name="gênero"
-          width="w-1/2"
+          width="w-1/2 max-sm:w-full"
           display={displayState}
           content={itemSelect}
           setContent={setItemSelect}
@@ -146,7 +150,7 @@ const ResponsiveForm = ({ maxWidth, width }) => {
           label="Escolha uma data"
           name="data"
           type="date"
-          width="w-1/2"
+          width="w-1/2 max-sm:w-full"
           setContent={setDate}
           content={date}
           display={displayState}
@@ -156,16 +160,17 @@ const ResponsiveForm = ({ maxWidth, width }) => {
       </div>
 
       <div className={`${modalState} loader-container`}>
+        {/* Animação de loading */}
         {spinner && <div className={"spinner"}></div>}
-
+        {/* Mensagem de status do formulário */}
         {msgSend && <FormStatus setGoBack={setGoBack} goBack={goBack} />}
       </div>
 
       <InputButton
-        width="w-full"
         value="Enviar"
         type="submit"
         name="submit"
+        width="w-full"
         disabled={buttonState}
         display={displayState}
       />

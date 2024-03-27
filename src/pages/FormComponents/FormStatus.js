@@ -28,12 +28,12 @@ const FormStatus = ({ type = "success", setGoBack, goBack }) => {
         </svg>
 
         <InputButton
-          type="button"
-          width="w-48"
           value="Retornar"
+          type="button"
+          name="return"
+          width="w-48"
           setContent={setGoBack}
           content={goBack}
-          name="return"
         />
       </div>
     );
@@ -68,12 +68,12 @@ const FormStatus = ({ type = "success", setGoBack, goBack }) => {
         </svg>
 
         <InputButton
-          type="button"
-          width="w-48"
           value="Retornar"
+          type="button"
+          name="return"
+          width="w-48"
           setContent={setGoBack}
           content={goBack}
-          name="return"
         />
       </div>
     );
