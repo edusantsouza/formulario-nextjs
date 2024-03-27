@@ -5,7 +5,7 @@ import ResponsiveForm from "./ResponsiveForm";
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
-  return <ResponsiveForm />;
+  return <ResponsiveForm maxWidth="max-w-screen-sm" width="w-full" />;
 };
 
 export default Home;

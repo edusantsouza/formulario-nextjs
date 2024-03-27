@@ -7,7 +7,7 @@ export default function Document() {
       lang="pt"
     >
       <Head />
-      <body className="bg-transparent">
+      <body className="bg-transparent max-w-screen-sm w-full">
         <Main className="bg-transparent" />
         <NextScript className="bg-transparent" />
       </body>

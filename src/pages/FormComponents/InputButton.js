@@ -1,11 +1,26 @@
-const InputButton = ({ value, disable }) => {
+const InputButton = ({
+  type = "button",
+  value = "Enviar",
+  disabled = false,
+  width = "w-24",
+  display = "flex",
+  setContent,
+  content,
+  name,
+}) => {
+  const handleClick = () => {
+    setContent(!content);
+  };
+
   return (
     <input
-      type="submit"
+      type={type}
       value={value}
-      disabled={disable}
-      className={`button ${!disable && "onhover"}
-    ${disable ? "btn-disabled" : null} `}
+      disabled={disabled}
+      className={`${display} justify-center px-8 py-4 rounded-md text-white ${width}
+    font-semibold ${!disabled && "hover:bg-blue-600"} text-sm 
+    ${!disabled ? "bg-blue-500 cursor-pointer" : "bg-blue-300"} `}
+      onClick={name === "return" ? handleClick : null}
     />
   );
 };

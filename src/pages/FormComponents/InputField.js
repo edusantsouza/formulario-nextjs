@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const InputField = ({ label, placeholder, type, disable, setContent }) => {
+const InputField = ({
+  type = "text",
+  disabled = false,
+  width = "w-full",
+  messageBool = true,
+  label,
+  placeholder,
+  setContent,
+  display,
+  name,
+  content,
+  reset,
+}) => {
   const [value, setValue] = useState("");
-  const [border, setBorder] = useState("gray-border");
+  const [border, setBorder] = useState("border-gray-300");
   const [message, setMessage] = useState("* Esse campo deve ser preenchido");
   const [visibility, setVisibility] = useState("invisible");
 
@@ -13,30 +25,42 @@ const InputField = ({ label, placeholder, type, disable, setContent }) => {
 
     if (event.target.value.trim() !== "") {
       if (!event.target.value.includes("@") && type.toLowerCase() === "email") {
-        setBorder("red-border");
+        setBorder("border-red-500");
         setMessage("* Esse campo deve possuir um e-mail válido");
         setVisibility("visible");
       } else {
         setVisibility("invisible");
-        setBorder("green-border");
+        setBorder("border-green-500");
       }
     } else {
-      setBorder("red-border");
+      setBorder("border-red-500");
       setVisibility("visible");
     }
   };
 
+  useEffect(() => {
+    setBorder("border-gray-300");
+  }, [reset]);
+
   return (
-    <div className="form__input-wrapper">
-      <label>{label}</label>
+    <div className={` ${display} flex-col gap-1 ${width}`}>
+      <label className="text-sm text-gray-500">{label}</label>
       <input
         type={type}
-        className={`${border}`}
+        className={`focus:outline-none focus:ring-2 focus:ring-blue-600
+           focus:border-transparent border text-sm rounded-md
+            ${!disabled && "hover:border-blue-800"} ${
+          type.toLowerCase() === "date" ? "text-gray-500" : null
+        } p-2 ${border}`}
         placeholder={placeholder}
         onChange={handleChange}
-        disabled={disable}
+        disabled={disabled}
+        name={name}
+        value={content}
       />
-      <span className={`message-text ${visibility}`}>{message}</span>
+      {messageBool && (
+        <span className={`text-xs text-red-500 ${visibility}`}>{message}</span>
+      )}
     </div>
   );
 };
