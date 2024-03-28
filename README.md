@@ -6,19 +6,45 @@ a estilização feita em Tailwind CSS.
 - Requisitos:
   - Criar projeto React com NextJS:  [Começar um novo projeto React](https://react.dev/learn/start-a-new-react-project);
   - Instalar Tailwind: [Instalar Tailwind CSS com NextJS](https://tailwindcss.com/docs/guides/nextjs)
-  - Importar o arquivo `form.css` para o componente raiz do projeto.
+  - Importar/substituir todos os arquivo enviados para pasta do projeto criado na sua máquina. 
+  - Por padrão, o Next tem seus próprios arquivos criados, mas é possível substituí-los pelos arquivos de mesmo nome neste projeto.
 
 
 ### ResponsiveForm
 
 ```bash
   <ResponsiveForm 
-  width=" *tailwind width* " 
+        width,
+      formInputValues,
+      setFormInputValues,
+      storageItems,
+      setStorageItems,
+      name,
+      setName,
+      surname,
+      setSurname,
+      email,
+      setEmail,
+      itemSelect,
+      setItemSelect,
+      date,
+      setDate,
+      buttonState,
+      setButtonState,
+      displayState,
+      setDisplayState,
+      modalState,
+      setModalState,
+      goBack,
+      setGoBack,
+      spinner,
+      setSpinner,
+      msgSend,
+      setMsgSend,
   />
 ```
 
-O componente `ResponsiveForm.js` é o form em si, o componente princial, e espera receber a prop `Width`. Essa prop não possue
-valor padrão e é obrigatória. No entanto, o valor dela espera uma class Tailwind CSS de width.
+O componente `ResponsiveForm.js` é o form em si, o componente princial de formulário, ele recebe várias props que estão declaradas no arquivo `index.js`. Os valores de CSS, como `width` devem ser declaradas como classe CSS. 
 
 - Veja [Width - Tailwind CSS](https://v2.tailwindcss.com/docs/width) na documentação.
 
@@ -134,3 +160,43 @@ exibe uma mensagem que o item foi deletado.
 - goBack* ->  State criado no `ResponsiveForm.js` responsável por armazenar uma ação que retorna ao Form principal;
 
 As props que contém "*" são obrigatórias para o correto funcionamento do componente dentro do Form.
+
+
+### RegisterArea
+```bash
+      <RegisterArea
+        title="Dados cadastrados"
+        storageItems={storageItems}
+        setStorageItems={setStorageItems}
+        spinner={spinner}
+      />
+```
+O componente `RegisterArea.js` é a área onde os cadastros serão exibidos:
+
+- title* -> Mensagem exibida no topo da tela
+- storageItems* -> setState criado no `index.js` responsável armazenar os forms salvos no localStorage;
+- setStorageItems* -> setState criado no `index.js` responsável setar os forms e salvar no localStorage;
+- spinner* ->  State criado no `index.js` responsável mudar ativar/desativar o efeito de loading nos carregamentos;
+
+As props que contém "*" são obrigatórias para o correto funcionamento do componente dentro do Form.
+
+
+### RegisteredItem
+```bash
+      <RegisteredItem
+            storageItems={storageItems}
+            setStorageItems={setStorageItems}
+          />
+```
+O componente `RegisteredItem.js` exibe os itens cadastrados:
+
+- storageItems* -> setState criado no `index.js` responsável armazenar os forms salvos no localStorage;
+- setStorageItems* -> setState criado no `index.js` responsável setar os forms e salvar no localStorage;
+
+As props que contém "*" são obrigatórias para o correto funcionamento do componente dentro do Form.
+
+
+
+## Executando o Projeto
+
+Com o projeto Next criado e com os arquivos substituídos/adicionados, basta usar o comando `npm run dev` na linha de comando para que o server seja inciado localmente. 
