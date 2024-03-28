@@ -53,7 +53,7 @@ const InputField = ({
 
   return (
     <div className={` ${display} flex-col gap-1 ${width}`}>
-      <label name={name} className="text-sm text-gray-400">
+      <label for={name} className="text-sm text-gray-400">
         {label}
       </label>
       <input
@@ -67,6 +67,7 @@ const InputField = ({
         onChange={handleChange}
         disabled={disabled}
         name={name}
+        id={name}
         value={content}
       />
       {messageBool && (

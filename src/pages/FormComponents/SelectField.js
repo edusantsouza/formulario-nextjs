@@ -29,7 +29,7 @@ const SelectField = ({
 
   return (
     <div className={`${display} gap-1 flex-col max-w-screen-sm ${width}`}>
-      <label name={name} className="text-gray-400 text-sm">
+      <label for={name} className="text-gray-400 text-sm">
         {label}
       </label>
       <select
@@ -41,6 +41,7 @@ const SelectField = ({
         style={{ border: `1px solid ${border}` }}
         disabled={disabled}
         name={name}
+        id={name}
       >
         <option className="p-2 " value="">
           {standardValue}
