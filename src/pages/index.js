@@ -6,12 +6,67 @@ import RegisterArea from "./RegisterArea";
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
-  const [dataLocal, setDataLocal] = useState([]);
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [itemSelect, setItemSelect] = useState("");
+  const [date, setDate] = useState("");
+  const [buttonState, setButtonState] = useState(true);
+  const [displayState, setDisplayState] = useState("flex");
+  const [modalState, setModalState] = useState("hidden");
+  const [goBack, setGoBack] = useState(false);
+  const [spinner, setSpinner] = useState(false);
+  const [msgSend, setMsgSend] = useState(false);
+
+  const [formInputValues, setFormInputValues] = useState("");
+  const [storageItems, setStorageItems] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedItems = localStorage.getItem("registeredItems");
+      return savedItems ? JSON.parse(savedItems) : [];
+    } else {
+      return [];
+    }
+  });
+
   return (
-    <div className="flex items-center gap-2 max-lg:flex-col  max-w-screen-xl w-full ">
-      <ResponsiveForm width="w-full" setDataLocal={setDataLocal} />
-      <RegisterArea title="Dados cadastrados" dataLocal={dataLocal} />
-    </div>
+    <section className="flex items-center gap-2 max-lg:flex-col  max-w-screen-xl w-full ">
+      <ResponsiveForm
+        width="w-full"
+        formInputValues={formInputValues}
+        setFormInputValues={setFormInputValues}
+        storageItems={storageItems}
+        setStorageItems={setStorageItems}
+        name={name}
+        setName={setName}
+        surname={surname}
+        setSurname={setSurname}
+        email={email}
+        setEmail={setEmail}
+        itemSelect={itemSelect}
+        setItemSelect={setItemSelect}
+        date={date}
+        setDate={setDate}
+        buttonState={buttonState}
+        setButtonState={setButtonState}
+        displayState={displayState}
+        setDisplayState={setDisplayState}
+        modalState={modalState}
+        setModalState={setModalState}
+        goBack={goBack}
+        setGoBack={setGoBack}
+        spinner={spinner}
+        setSpinner={setSpinner}
+        msgSend={msgSend}
+        setMsgSend={setMsgSend}
+      />
+
+      <RegisterArea
+        title="Dados cadastrados"
+        storageItems={storageItems}
+        setStorageItems={setStorageItems}
+        spinner={spinner}
+      />
+    </section>
   );
 };
 

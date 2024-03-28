@@ -4,37 +4,35 @@ import InputField from "./FormComponents/InputField";
 import SelectField from "./FormComponents/SelectField";
 import FormStatus from "./FormComponents/FormStatus";
 
-const ResponsiveForm = ({ width, setDataLocal }) => {
-  {
-    /* Estados de controle para o Layout */
-  }
-  const [buttonState, setButtonState] = useState(true);
-  const [displayState, setDisplayState] = useState("flex");
-  const [modalState, setModalState] = useState("hidden");
-  const [goBack, setGoBack] = useState(false);
-  const [spinner, setSpinner] = useState(false);
-  const [msgSend, setMsgSend] = useState(false);
-
-  {
-    /* Valor de cada campo do formulário */
-  }
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [itemSelect, setItemSelect] = useState("");
-  const [date, setDate] = useState("");
-  const [formInputValues, setFormInputValues] = useState("");
-  const [storageItems, setStorageItems] = useState(() => {
-    if (typeof window !== "undefined") {
-      const savedTodos = localStorage.getItem("registeredItems");
-      return savedTodos ? JSON.parse(savedTodos) : [];
-    } else {
-      return [];
-    }
-  });
-  {
-    /* Ação básica do Form */
-  }
+const ResponsiveForm = ({
+  width,
+  formInputValues,
+  setFormInputValues,
+  storageItems,
+  setStorageItems,
+  name,
+  setName,
+  surname,
+  setSurname,
+  email,
+  setEmail,
+  itemSelect,
+  setItemSelect,
+  date,
+  setDate,
+  buttonState,
+  setButtonState,
+  displayState,
+  setDisplayState,
+  modalState,
+  setModalState,
+  goBack,
+  setGoBack,
+  spinner,
+  setSpinner,
+  msgSend,
+  setMsgSend,
+}) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     setDisplayState("hidden");
@@ -44,13 +42,6 @@ const ResponsiveForm = ({ width, setDataLocal }) => {
     setStorageItems([...storageItems, formInputValues]);
   };
 
-  {
-    /* Valida os valores dos campos obrigatórios 
-    Cada campo acrescentado no form precisa ser colocado aqui
-    E caso o campo seja retirado, ele também precisa sair da condição de verificação 
-    Essencialmente ele alternar o estado do botão de submit ao entender que não restam campos 
-    considerados obrigatórios, vazios */
-  }
   useEffect(() => {
     if (
       itemSelect !== "" &&
@@ -62,12 +53,13 @@ const ResponsiveForm = ({ width, setDataLocal }) => {
     ) {
       setButtonState(false);
       setFormInputValues({
-        name: name,
-        surname: surname,
-        email: email,
-        itemSelect: itemSelect,
-        date: date,
+        name,
+        surname,
+        email,
+        itemSelect,
+        date,
       });
+      console.log(itemSelect);
     } else {
       setButtonState(true);
     }

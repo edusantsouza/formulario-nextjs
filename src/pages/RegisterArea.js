@@ -1,10 +1,10 @@
 import RegisteredItem from "./FormComponents/RegisteredItem";
 
-const RegisterArea = ({ title }) => {
+const RegisterArea = ({ title, storageItems, setStorageItems, spinner }) => {
   return (
-    <div
-      className="register flex-col px-6 py-8 m-4 bg-gray-900 rounded-lg
-  gap-12 items-start w-full overflow-y-scroll overflow-x-hidden max-h-600 shadow-lg"
+    <section
+      className="register relative flex-col px-6 py-8 m-4 bg-gray-900 rounded-lg
+  gap-12 items-start w-full overflow-y-scroll overflow-x-hidden max-h-600 min-h-600 shadow-lg"
     >
       <h2
         className="font-semibold bg-gray-900 text-green-400 text-lg max-w-auto w-full
@@ -13,10 +13,20 @@ const RegisterArea = ({ title }) => {
         {title}
       </h2>
 
-      <ul className="flex flex-col gap-4 pt-8">
-        <RegisteredItem />
-      </ul>
-    </div>
+      {/* Animação de loading */}
+      {spinner ? (
+        <div className={`loader-container   flex items-center justify-center`}>
+          <div className={"spinner"}></div>
+        </div>
+      ) : (
+        <ul className="flex flex-col gap-4 pt-8">
+          <RegisteredItem
+            storageItems={storageItems}
+            setStorageItems={setStorageItems}
+          />
+        </ul>
+      )}
+    </section>
   );
 };
 

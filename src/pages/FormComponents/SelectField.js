@@ -29,7 +29,7 @@ const SelectField = ({
 
   return (
     <div className={`${display} gap-1 flex-col max-w-screen-sm ${width}`}>
-      <label className="text-gray-500 text-sm">{label}</label>
+      <label className="text-gray-400 text-sm">{label}</label>
       <select
         value={content}
         onChange={handleChange}

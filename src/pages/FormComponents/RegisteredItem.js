@@ -1,15 +1,44 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const RegisteredItem = () => {
-  const [storageItems, setStorageItems] = useState("");
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setStorageItems(JSON.parse(localStorage.getItem("registeredItems")));
-    }
-  }, []);
+const RegisteredItem = ({ storageItems }) => {
+  const [newItems, setNewItems] = useState();
 
-  return storageItems ? (
-    storageItems.map((item, index) => {
+  const formatDate = (inputDate) => {
+    const dateParts = inputDate.split("-");
+    const year = dateParts[0];
+    const month = dateParts[1];
+    const day = dateParts[2];
+
+    const months = [
+      "jan",
+      "fev",
+      "mar",
+      "abr",
+      "mai",
+      "jun",
+      "jul",
+      "ago",
+      "set",
+      "out",
+      "nov",
+      "dez",
+    ];
+
+    const monthIndex = parseInt(month, 10) - 1; // Subtrai 1 porque o array de meses começa em 0
+
+    const formattedDate = `${parseInt(day, 10)} ${months[monthIndex]} ${year}`;
+
+    return formattedDate;
+  };
+
+  const deleteItem = (e) => {
+    const itemIndexToRemove = e.target.id;
+    setNewItems(storageItems.splice(itemIndexToRemove, 1));
+    localStorage.setItem("registeredItems", JSON.stringify(newItems));
+  };
+
+  if (storageItems.length > 0) {
+    return storageItems.map((item, index) => {
       return (
         <li
           key={index}
@@ -36,28 +65,34 @@ const RegisteredItem = () => {
             <div className="flex flex-col w-full max-w-max gap-2">
               <p className="text-xs w-full text-gray-300">
                 <span className="font-medium text-green-300">Gênero:</span>{" "}
-                {item.selecItem}
+                {item.itemSelect}
               </p>
 
               <p className="text-xs w-full text-gray-300">
                 <span className="font-medium text-green-300">Nascimento:</span>{" "}
-                {item.date}
+                {formatDate(item.date)}
               </p>
             </div>
           </div>
           <div className="actions font-medium items-center justify-center flex w-1/6 max-sm:w-full max-sm:w-full max-sm:bg-red-800 max-sm:rounded-sm max-sm:text-white">
-            <button className="text-white p-2 bg-red-800 text-xs rounded-sm">
+            <button
+              id={index}
+              onClick={deleteItem}
+              className="text-white p-2 bg-red-800 text-xs rounded-sm"
+            >
               Excluir
             </button>
           </div>
         </li>
       );
-    })
-  ) : (
-    <div className={`flex items-center justify-center w-full min-h-450`}>
-      <div className={"spinner "}></div>
-    </div>
-  );
+    });
+  } else {
+    return (
+      <li className={"text-md font-medium text-gray-400 "}>
+        Nenhum item adicionado.
+      </li>
+    );
+  }
 };
 
 export default RegisteredItem;
