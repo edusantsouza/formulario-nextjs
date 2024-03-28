@@ -22,7 +22,7 @@ const Home = () => {
   const [storageItems, setStorageItems] = useState(() => {
     if (typeof window !== "undefined") {
       const savedItems = localStorage.getItem("registeredItems");
-      return savedItems ? JSON.parse(savedItems) : [];
+      return savedItems !== "undefined" ? JSON.parse(savedItems) : [];
     } else {
       return [];
     }

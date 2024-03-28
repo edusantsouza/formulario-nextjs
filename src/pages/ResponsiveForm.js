@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import InputButton from "./FormComponents/InputButton";
 import InputField from "./FormComponents/InputField";
 import SelectField from "./FormComponents/SelectField";
@@ -59,7 +59,6 @@ const ResponsiveForm = ({
         itemSelect,
         date,
       });
-      console.log(itemSelect);
     } else {
       setButtonState(true);
     }

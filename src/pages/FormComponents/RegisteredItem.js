@@ -37,7 +37,7 @@ const RegisteredItem = ({ storageItems }) => {
     localStorage.setItem("registeredItems", JSON.stringify(newItems));
   };
 
-  if (storageItems.length > 0) {
+  if (storageItems && storageItems.length > 0) {
     return storageItems.map((item, index) => {
       return (
         <li
