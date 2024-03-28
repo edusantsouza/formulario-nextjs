@@ -13,16 +13,14 @@ a estilização feita em Tailwind CSS.
 
 ```bash
   <ResponsiveForm 
-  maxWidth=" *tailwind max-width* " 
   width=" *tailwind width* " 
   />
 ```
 
-O componente `ResponsiveForm.js` é o form em si, o componente princial, e espera receber duas props: `maxWidth` e `Width`. Essas duas props não possuem
-valor padrão e são obrigatórias. No entanto, o valor delas esperar uma class Tailwind CSS relacionada a seus respectivos nomes.
+O componente `ResponsiveForm.js` é o form em si, o componente princial, e espera receber a prop `Width`. Essa prop não possue
+valor padrão e é obrigatória. No entanto, o valor dela espera uma class Tailwind CSS de width.
 
 - Veja [Width - Tailwind CSS](https://v2.tailwindcss.com/docs/width) na documentação.
-- Veja [Max-Width - Tailwind CSS](https://v2.tailwindcss.com/docs/maxwidth) na documentação.
 
 ### InputField
 

@@ -15,6 +15,14 @@ module.exports = {
       spacing: {
         100: "600px",
       },
+      maxHeight: {
+        600: "570px",
+      },
+      minHeight: {
+        600: "570px",
+        450: "450px",
+        350: "350px",
+      },
     },
   },
   plugins: [],

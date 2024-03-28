@@ -17,7 +17,7 @@ const SelectField = ({
   const handleChange = (event) => {
     setContent(event.target.value);
     if (event.target.value.trim() !== "") {
-      setBorder("#22c55e");
+      setBorder("#86efac");
     } else {
       setBorder("#ef4444");
     }
@@ -33,7 +33,7 @@ const SelectField = ({
       <select
         value={content}
         onChange={handleChange}
-        className={`p-2 text-gray-600 ${border} text-sm 
+        className={`p-2 text-gray-400 ${border} bg-gray-800 text-sm 
         rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600
         focus:border-transparent`}
         style={{ border: `1px solid ${border}` }}

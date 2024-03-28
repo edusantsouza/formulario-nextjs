@@ -13,7 +13,7 @@ const InputField = ({
   content,
   reset,
 }) => {
-  const [border, setBorder] = useState("border-gray-300");
+  const [border, setBorder] = useState("border-gray-700");
   const [message, setMessage] = useState("* Esse campo deve ser preenchido");
   const [visibility, setVisibility] = useState("invisible");
 
@@ -36,10 +36,10 @@ const InputField = ({
         setVisibility("visible");
       } else {
         setVisibility("invisible");
-        setBorder("border-green-500");
+        setBorder("border-green-300");
       }
     } else {
-      setBorder("border-red-500");
+      setBorder("border-red-400");
       setVisibility("visible");
     }
   };
@@ -48,15 +48,15 @@ const InputField = ({
     /* Reseta as cores das bordas */
   }
   useEffect(() => {
-    setBorder("border-gray-300");
+    setBorder("border-gray-500");
   }, [reset]);
 
   return (
     <div className={` ${display} flex-col gap-1 ${width}`}>
-      <label className="text-sm text-gray-500">{label}</label>
+      <label className="text-sm text-gray-400">{label}</label>
       <input
         type={type}
-        className={`focus:outline-none focus:ring-2 focus:ring-blue-600
+        className={`bg-gray-800  text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600
            focus:border-transparent border text-sm rounded-md
             ${!disabled && "hover:border-blue-800"} ${
           type.toLowerCase() === "date" ? "text-gray-500" : null

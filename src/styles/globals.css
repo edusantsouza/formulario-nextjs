@@ -30,3 +30,17 @@
     text-wrap: balance;
   }
 }
+
+.register::-webkit-scrollbar {
+  background-color: #222b3f;
+
+}
+
+.register::-webkit-scrollbar-thumb {
+  background-color: #222b3f;
+}
+
+.register::-webkit-scrollbar-track {
+  background-color: #464d5c;
+
+}

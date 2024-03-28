@@ -6,7 +6,7 @@ const FormStatus = ({ status = "success", setGoBack, goBack }) => {
       <div
         className={`flex flex-col items-center justify-center gap-4 form-notice`}
       >
-        <span className="text-lg font-semibold text-gray-900">
+        <span className="text-lg font-semibold text-gray-300 ">
           Formulário enviado com sucesso!
         </span>
         <svg
@@ -42,7 +42,7 @@ const FormStatus = ({ status = "success", setGoBack, goBack }) => {
       <div
         className={`flex flex-col items-center justify-center gap-4 form-notice`}
       >
-        <span className="text-lg font-semibold text-gray-900">
+        <span className="text-lg font-semibold text-gray-300">
           As informações foram deletadas com sucesso!
         </span>
         <svg

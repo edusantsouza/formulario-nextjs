@@ -4,7 +4,7 @@ import InputField from "./FormComponents/InputField";
 import SelectField from "./FormComponents/SelectField";
 import FormStatus from "./FormComponents/FormStatus";
 
-const ResponsiveForm = ({ maxWidth, width }) => {
+const ResponsiveForm = ({ width, setDataLocal }) => {
   {
     /* Estados de controle para o Layout */
   }
@@ -23,7 +23,15 @@ const ResponsiveForm = ({ maxWidth, width }) => {
   const [email, setEmail] = useState("");
   const [itemSelect, setItemSelect] = useState("");
   const [date, setDate] = useState("");
-
+  const [formInputValues, setFormInputValues] = useState("");
+  const [storageItems, setStorageItems] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedTodos = localStorage.getItem("registeredItems");
+      return savedTodos ? JSON.parse(savedTodos) : [];
+    } else {
+      return [];
+    }
+  });
   {
     /* Ação básica do Form */
   }
@@ -33,6 +41,7 @@ const ResponsiveForm = ({ maxWidth, width }) => {
     setModalState("flex");
     setSpinner(true);
     setMsgSend(false);
+    setStorageItems([...storageItems, formInputValues]);
   };
 
   {
@@ -52,6 +61,13 @@ const ResponsiveForm = ({ maxWidth, width }) => {
       email.includes("@")
     ) {
       setButtonState(false);
+      setFormInputValues({
+        name: name,
+        surname: surname,
+        email: email,
+        itemSelect: itemSelect,
+        date: date,
+      });
     } else {
       setButtonState(true);
     }
@@ -82,6 +98,11 @@ const ResponsiveForm = ({ maxWidth, width }) => {
     setDate("");
   }, [goBack]);
 
+  useEffect(() => {
+    if (name && surname && itemSelect && date && email)
+      localStorage.setItem("registeredItems", JSON.stringify(storageItems));
+  }, [onFormSubmit]);
+
   {
     /* Array passada via prop para o componente de SelectField  */
   }
@@ -96,12 +117,14 @@ const ResponsiveForm = ({ maxWidth, width }) => {
     <form
       action=""
       onSubmit={onFormSubmit}
-      className={`relative flex flex-col px-6 py-8 m-4 bg-white rounded-lg
-       gap-12 border border-gray-300 items-start ${
-         modalState === "flex" ? "min-h-full h-96" : null
-       }  ${maxWidth} ${width}`}
+      className={`relative flex flex-col px-6 py-8 m-4 bg-gray-900 rounded-lg
+       gap-12 items-start shadow-lg ${
+         modalState === "flex" ? "min-h-600" : null
+       }  ${width}`}
     >
-      <p className={`${displayState} font-semibold text-lg`}>Formulário</p>
+      <p className={`${displayState} font-semibold text-lg text-green-400`}>
+        Formulário
+      </p>
 
       <div className="flex gap-2 w-full max-sm:flex-col">
         <InputField
@@ -151,7 +174,7 @@ const ResponsiveForm = ({ maxWidth, width }) => {
         />
 
         <InputField
-          label="Escolha uma data"
+          label="Data de nascimento"
           name="data"
           type="date"
           width="w-1/2 max-sm:w-full"
