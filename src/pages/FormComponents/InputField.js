@@ -53,7 +53,9 @@ const InputField = ({
 
   return (
     <div className={` ${display} flex-col gap-1 ${width}`}>
-      <label className="text-sm text-gray-400">{label}</label>
+      <label name={name} className="text-sm text-gray-400">
+        {label}
+      </label>
       <input
         type={type}
         className={`bg-gray-800  text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600
